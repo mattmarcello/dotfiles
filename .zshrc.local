@@ -1,0 +1,19 @@
+# ensure tmux is running at logi
+
+
+_not_inside_tmux() { [[ -z "$TMUX" ]] }
+
+ensure_tmux_is_running() {
+  if _not_inside_tmux; then
+    tat
+  fi
+}
+
+ensure_tmux_is_running
+
+# export docker environment variables
+eval `boot2docker shellinit 2>/dev/null`
+
+export GOPATH=/Users/mpm/src/gocode
+
+export PATH="$GOPATH/bin:$PATH"
